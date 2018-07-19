@@ -1,0 +1,11 @@
+// Power Plant design model provided by Bentley Systems
+var viewer = new Cesium.Viewer('cesiumContainer');
+
+var tileset = new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(3837) });
+
+tileset.readyPromise.then(function(tileset) {
+    viewer.scene.primitives.add(tileset);
+    viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(0.5, -0.2, tileset.boundingSphere.radius * 4.0));
+}).otherwise(function(error) {
+    console.log(error);
+});
